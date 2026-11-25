@@ -1,14 +1,15 @@
-using MyFirstWebApp.Services;
-
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddScoped<EmployeeService>();
-
 var app = builder.Build();
 
-app.MapGet("/employee", (EmployeeService service) =>
+app.Use(async (context, next) =>
 {
-    return service.GetEmployee();
+    Console.WriteLine("Request received");
+
+    await next();
+
+    Console.WriteLine("Response completed");
 });
+
+app.MapGet("/", () => "Welcome!");
 
 app.Run();
