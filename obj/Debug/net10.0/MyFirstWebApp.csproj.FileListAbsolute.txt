@@ -28,4 +28,4 @@
 /Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/ref/MyFirstWebApp.dll
 /Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/MyFirstWebApp.sourcelink.json
 /Users/mac/Desktop/DotNet/MyFirstWebApp/bin/Debug/net10.0/MyFirstWebApp.staticwebassets.runtime.json
-/Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/compressed/cjrqhxqk44-{0}-g6e121x4tu-g6e121x4tu.gz
+/Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/compressed/cjrqhxqk44-{0}-xhweps2scb-xhweps2scb.gz
