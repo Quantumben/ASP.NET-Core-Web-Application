@@ -1,11 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDirectoryBrowser();
-
 var app = builder.Build();
 
-app.UseStaticFiles();
+app.UseHttpsRedirection();
 
-app.UseDirectoryBrowser();
+app.MapGet("/", () => "Secure Application");
 
 app.Run();
