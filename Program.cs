@@ -1,15 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
+
+var companyName = builder.Configuration["Company:Name"];
+
 var app = builder.Build();
 
-app.Use(async (context, next) =>
+app.MapGet("/company", () =>
 {
-    Console.WriteLine("Request received");
-
-    await next();
-
-    Console.WriteLine("Response completed");
+    return $"Company: {companyName}";
 });
-
-app.MapGet("/", () => "Welcome!");
 
 app.Run();
