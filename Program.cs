@@ -1,20 +1,23 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/request-info", (HttpContext context) =>
+app.MapGet("/", () => "Home Page");
+
+app.MapGet("/employees", () =>
 {
-    var method = context.Request.Method;
+    return "All Employees";
+});
 
-    var path = context.Request.Path.ToString();
+app.MapGet("/employees/{id:int}", (int id) =>
+{
+    return $"Employee ID: {id}";
+});
 
-    var host = context.Request.Host.ToString();
-
-    return Results.Ok(new
-    {
-        Method = method,
-        Path = path,
-        Host = host
-    });
+app.MapPost("/employees", () =>
+{
+    return Results.Created(
+        "/employees/4",
+        new { Id = 4, Name = "Ada" });
 });
 
 app.Run();
