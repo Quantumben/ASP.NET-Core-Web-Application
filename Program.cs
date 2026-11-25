@@ -25,4 +25,15 @@ app.MapGet("/external-data", async (IHttpClientFactory factory) =>
         "application/json");
 });
 
+
+app.MapGet("/paths", (IWebHostEnvironment env) =>
+{
+    return Results.Ok(new
+    {
+        ContentRoot = env.ContentRootPath,
+        WebRoot = env.WebRootPath
+    });
+});
+
+
 app.Run();
