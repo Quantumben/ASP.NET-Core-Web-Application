@@ -1,12 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
-app.MapGet("/employees", (ILogger<Program> logger) =>
-{
-    logger.LogInformation(
-        "Employee endpoint was accessed");
-
-    return "Employee records retrieved";
-});
+app.MapHealthChecks("/health");
 
 app.Run();
