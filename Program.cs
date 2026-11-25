@@ -1,39 +1,28 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
-
-app.MapGet("/employees/{id:int}", (int id) =>
+app.MapGet("/external-data", async (IHttpClientFactory factory) =>
 {
-    if (id != 1)
+    var client = factory.CreateClient();
+
+    var response = await client.GetAsync("https://jsonplaceholder.typicode.com/todos/1");
+
+    if (!response.IsSuccessStatusCode)
     {
-        return Results.NotFound(
-            "Employee not found");
+        return Results.Problem(
+            "External service is unavailable",
+            statusCode: 502);
     }
 
-    return Results.Ok(new
-    {
-        Id = 1,
-        Name = "Samuel"
-    });
+    var data = await response.Content
+        .ReadAsStringAsync();
+
+    return Results.Content(
+        data,
+        "application/json");
 });
-
-
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler(errorApp =>
-    {
-        errorApp.Run(async context =>
-        {
-            context.Response.StatusCode = 500;
-
-            await context.Response.WriteAsJsonAsync(
-                new { Error = "An unexpected error occurred." });
-        });
-    });
-}
-
-app.MapGet("/", () => "Application running");
 
 app.Run();
