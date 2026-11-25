@@ -26,3 +26,4 @@
 /Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/MyFirstWebApp.pdb
 /Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/MyFirstWebApp.genruntimeconfig.cache
 /Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/ref/MyFirstWebApp.dll
+/Users/mac/Desktop/DotNet/MyFirstWebApp/obj/Debug/net10.0/MyFirstWebApp.sourcelink.json

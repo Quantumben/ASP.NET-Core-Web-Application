@@ -1,12 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
-
-var companyName = builder.Configuration["Company:Name"];
-
 var app = builder.Build();
 
-app.MapGet("/company", () =>
+if (app.Environment.IsDevelopment())
 {
-    return $"Company: {companyName}";
-});
+    app.MapGet("/environment", () =>
+        "Development Mode");
+}
+else
+{
+    app.MapGet("/environment", () =>
+        "Non-Development Mode");
+}
 
 app.Run();
